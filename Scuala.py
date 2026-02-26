@@ -4,7 +4,7 @@ import google.generativeai as genai
 
 # Configurazione API
 api_key = st.secrets["GEMINI_API_KEY"]
-    genai.configure(api_key=api_key)
+genai.configure(api_key=api_key)
 except Exception as e:
     st.error("Errore: Chiave API non trovata nei Secrets!")
 model = genai.GenerativeModel('gemini-2.5-flash')
@@ -60,3 +60,4 @@ if st.session_state.scelta:
             except Exception as e:
 
                 st.error(f"Errore: {e}")
+
