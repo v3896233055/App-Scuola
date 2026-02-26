@@ -61,3 +61,4 @@ if st.session_state.scelta:
 
                 st.error(f"Errore: {e}")
 
+
