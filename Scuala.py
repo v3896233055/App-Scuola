@@ -1,11 +1,13 @@
 import streamlit as st
 from PIL import Image
 import google.generativeai as genai
-import config
 
 # Configurazione API
-genai.configure(api_key=config.GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash')
+api_key = st.secrets["GEMINI_API_KEY"]
+    genai.configure(api_key=api_key)
+except Exception as e:
+    st.error("Errore: Chiave API non trovata nei Secrets!")
+model = genai.GenerativeModel('gemini-2.5-flash')
 
 st.set_page_config(page_title="Docente Smart", layout="centered")
 st.title("🍎 Assistente DidUp")
@@ -28,7 +30,7 @@ with col2:
     if st.button("✅ COMPITI (Correzione)", use_container_width=True):
         st.session_state.scelta = "compiti"
 
----
+st.divider()
 
 # --- LOGICA FOTOCAMERA ---
 # La camera appare SOLO se hai schiacciato un bottone
@@ -56,4 +58,5 @@ if st.session_state.scelta:
                     st.session_state.scelta = None
                     st.rerun()
             except Exception as e:
+
                 st.error(f"Errore: {e}")
