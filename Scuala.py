@@ -14,7 +14,7 @@ except Exception as e:
     st.error(f"Errore configurazione: {e}")
 
 # Inizializziamo il modello (1.5 Flash è perfetto per le foto)
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-2.5-flash')
 
 # --- INTERFACCIA ---
 st.set_page_config(page_title="Docente Smart", page_icon="🍎")
@@ -77,3 +77,4 @@ if st.session_state.scelta:
 
 # --- PIÈ DI PAGINA ---
 st.caption("Creato per aiutare i professori con didUp")
+
